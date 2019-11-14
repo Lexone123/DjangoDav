@@ -18,7 +18,7 @@ def view(request, name):
     if os.path.exists(directory):
         return Response(os.listdir(directory))
     else:
-        return Response({'Wrong part' + directory + '!'})
+        return Response({'response' : 'Wrong part' + directory + '!'})
 
 
 @api_view(['GET'])
@@ -45,7 +45,7 @@ def create(request, name):
     else:
         os.mkdir(directory)
         response = 'Directory' + str(name) + 'created!'
-    return Response(response)
+    return Response({"response": response})
 
 
 @api_view(['DELETE'])
@@ -59,7 +59,7 @@ def delete(request, name):
             response = 'It is file, not a directory!'
     else:
         response = 'Wrong directory!'
-    return Response(response)
+    return Response({"response":response})
 
 
 
